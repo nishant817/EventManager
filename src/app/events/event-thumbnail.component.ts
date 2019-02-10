@@ -12,12 +12,12 @@ import { Component, Input, EventEmitter, Output } from '@angular/core'
 
 export class EventThumbnailComponent {
     @Input() event:any // Input declarator tell the component that event obj is coming from some other component
-    @Output() eventClick = new EventEmitter(); // To bubble the click event to parent
+    @Output() handleEnrollForEvent = new EventEmitter(); // To bubble the click event to parent
 
-    handleClickMe() {
+    enrollForEvent() {
         // we can either handle it here or 
         // send to parent component using emit method.
-        this.eventClick.emit(this.event.name); // this will bubble the event up
+        this.handleEnrollForEvent.emit(this.event); // this will bubble the event up
     }
 
     someProperty:any = "Show me on parent";

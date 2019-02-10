@@ -1,6 +1,20 @@
-<!-- <div>
+<div>
     <h2>Upcoming Events</h2>
-    <hr>
-    <events-thumbnail></events-thumbnail>    
-</div> -->
+<hr>
+  <div class="row">
+    <div *ngFor="let eventItem of events" class="col-md-5">
+      <event-thumbnail
+        [event]="eventItem"
+        (handleEnrollForEvent)="enrollForEvent($event)"
+        #thumbnail >
+      </event-thumbnail>
+      {{thumbnail.someProperty}}
+    </div>
+  </div>
+<hr>
+
+<h4>Things coming from child component</h4>
+<button class="btn" (click)="thumbnail.logFoo()">Click to Log Foo</button>
+    
+</div>
 
