@@ -1,9 +1,19 @@
 import { Injector, Injectable } from '@angular/core'
+import { Subject } from 'rxjs'
+import { timeout } from 'q';
 
 @Injectable() // this is necessary only if we are injective another service into this service
 export class EventService {
     getEvents() {
-        return EVENTS;
+      let subject = new Subject();
+      setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 100);
+      return subject;
+      
+      //return EVENTS;
+    };
+
+    getEvent(id:number) {
+      return EVENTS.find(e => e.id === id);
     }
 }
 

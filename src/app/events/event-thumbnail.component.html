@@ -1,5 +1,5 @@
 
-<div class="well hoverwell thumbnail">
+<div [routerLink]="['/events', event.id]" class="well hoverwell thumbnail">
     <h3>{{event.name}}</h3>
     <div>Date: {{event.date}}</div>
     <div>Time: {{event.time}}</div>
