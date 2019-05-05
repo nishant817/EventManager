@@ -1,4 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
+import { IEvent } from './shared/index'
 
 @Component({
     selector: 'event-thumbnail',
@@ -11,7 +12,7 @@ import { Component, Input, EventEmitter, Output } from '@angular/core'
 })
 
 export class EventThumbnailComponent {
-    @Input() event:any // Input declarator tell the component that event obj is coming from some other component
+    @Input() event: IEvent // Input declarator tell the component that event obj is coming from some other component
     @Output() handleEnrollForEvent = new EventEmitter(); // To bubble the click event to parent
 
     enrollForEvent() {

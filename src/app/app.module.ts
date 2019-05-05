@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms'
 import { from } from 'rxjs';
 
 import { NavbarComponent } from './nav/index'
 import { Error404Component } from './errors/index'
 import { EventService } from './events/shared/index'
 import { ToastrService } from './common/index'
+import { AuthService } from './user/auth.service'
 
 import { 
   EventsListComponent, 
@@ -36,14 +38,16 @@ import {
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [
     EventService, // Also as { provide: EventService, useValue: EventService }
     ToastrService,
     EventRouteActivator,
     EventsListResolver,
-    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
+    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
+    AuthService
   ],
   bootstrap: [EventsAppComponent]
 })
